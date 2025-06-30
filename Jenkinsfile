@@ -17,12 +17,12 @@ pipeline {
             }
         }
 
-        stage('Build with Maven') {
-            steps {
-                echo "Running Maven build..."
-                sh 'mvn clean package -DskipTests'
-            }
-        }
+		stage('Build with Maven') {
+		    steps {
+		        echo "Running Maven build..."
+		        sh '/opt/homebrew/bin/mvn clean package -DskipTests'
+		    }
+		}
 
         stage('Deploy to EC2') {
             steps {
