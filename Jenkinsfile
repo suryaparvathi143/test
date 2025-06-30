@@ -41,7 +41,7 @@ pipeline {
                                             echo "Stopping existing app if running..."
                                             pkill -f ${APP_NAME} || true
                                             echo "Starting app..."
-                                            nohup java -jar ${REMOTE_DIR}/${APP_NAME} &
+                                            nohup java -jar /springboot-app/home/ec2-user/springboot-app/${APP_NAME} > /springboot-app/home/ec2-user/springboot-app/app.log 2>&1 &
                                             echo "App started. Exiting with success."
                                             exit 0
                                         '
