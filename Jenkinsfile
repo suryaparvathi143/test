@@ -36,10 +36,13 @@ pipeline {
                                     sourceFiles: "target/${APP_NAME}",
                                     removePrefix: "target",
                                     remoteDirectory: "${REMOTE_DIR}",
-                                    execCommand: """
-                                        pkill -f ${APP_NAME} || true
-                                        nohup java -jar ${REMOTE_DIR}/${APP_NAME} > ${REMOTE_DIR}/app.log 2>&1 &
-                                    """
+                                      execCommand: """
+                                bash -c '
+                                    pkill -f ${APP_NAME} || true
+                                    nohup java -jar ${REMOTE_DIR}/${APP_NAME} > ${REMOTE_DIR}/app.log 2>&1 &
+                                    exit 0
+                                '
+                            """
                                 )
                             ],
                             verbose: true
