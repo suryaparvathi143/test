@@ -37,12 +37,15 @@ pipeline {
                                     removePrefix: "target",
                                     remoteDirectory: "${REMOTE_DIR}",
                                       execCommand: """
-                                bash -c '
-                                    pkill -f ${APP_NAME} || true
-                                    nohup java -jar ${REMOTE_DIR}/${APP_NAME} > ${REMOTE_DIR}/app.log 2>&1 &
-                                    exit 0
-                                '
-                            """
+                                        bash -c '
+                                            echo "Stopping existing app if running..."
+                                            pkill -f ${APP_NAME} || true
+                                            echo "Starting app..."
+                                            nohup java -jar ${REMOTE_DIR}/${APP_NAME} > ${REMOTE_DIR}/app.log 2>&1 &
+                                            echo "App started. Exiting with success."
+                                            exit 0
+                                        '
+                                    """
                                 )
                             ],
                             verbose: true
