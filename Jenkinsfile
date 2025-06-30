@@ -3,7 +3,7 @@ pipeline {
 
     environment {
         EC2_USER = 'ec2-user'
-        EC2_HOST = '3.15.195.208'
+        EC2_HOST = '3.22.52.143'
         REMOTE_DIR = '/home/ec2-user/springboot-app'
         APP_NAME = 'test-0.0.1-SNAPSHOT.jar'  // ✅ Correct name
         SSH_KEY = 'ec2-ssh-key'               // Jenkins SSH Credentials ID
