@@ -41,7 +41,7 @@ pipeline {
                                             echo "Stopping existing app if running..."
                                             pkill -f ${APP_NAME} || true
                                             echo "Starting app..."
-                                            nohup java -jar ${REMOTE_DIR}/${APP_NAME} > ${REMOTE_DIR}/app.log 2>&1 &
+                                            nohup java -jar ${REMOTE_DIR}/${APP_NAME} &
                                             echo "App started. Exiting with success."
                                             exit 0
                                         '
